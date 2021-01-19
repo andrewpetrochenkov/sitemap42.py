@@ -5,7 +5,7 @@ import xml.dom.minidom
 import xml.etree.cElementTree as etree
 import xml.etree.ElementTree as ElementTree
 
-XMLNS_XSI = 'http://www.w3.org/2001/XMLSchema-instance'
+XMLNS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 CHANGEFREQ = ['always', 'hourly', 'daily', 'weekly',
               'monthly', 'yearly', 'never']
 
@@ -25,7 +25,7 @@ class Root:
 
     def _to_etree(self):
         root = etree.Element(self.root_tag)
-        root.attrib['xmlns:xsi'] = XMLNS_XSI
+        root.attrib['xmlns'] = XMLNS
         for item in self.items:
             doc = etree.SubElement(root, self.element_tag)
             etree.SubElement(doc, 'loc').text = item['loc']
